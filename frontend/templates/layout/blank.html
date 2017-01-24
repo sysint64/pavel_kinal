@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block title %}
+    {{ block.super }}
+    Привет мир
+{% endblock %}
+
+{% block js %}
+    {{ block.super }}
+
+    {# Пример добавления js файла #}
+    <script src="{% static "js/blank.ts" %}" type="text/"></script>
+{% endblock %}
+
+{% block styles %}
+    {{ block.super }}
+
+    {# Пример добавления sass файла #}
+    <link href="{% static "styles/blank.sass" %}" rel="stylesheet" type="text/typescript">
+{% endblock %}
+
+{% block content %}
+    Hello world
+{% endblock %}
