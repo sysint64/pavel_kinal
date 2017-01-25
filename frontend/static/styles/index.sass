@@ -1,5 +1,40 @@
 @import "consts.sass"
 
 html, body
-    font-family: "Roboto", sans-serif
+    font-family: 'Comfortaa', cursive
     background: $background
+
+#header
+    position: relative
+    width: $container-width
+    margin: auto
+
+    #text_logo
+        width: 768px
+        height: 250px
+
+    #logo
+        width: 380px
+        height: 284px
+
+    ul#language_select
+        border-radius: 10px
+        border: 2px solid $dark
+        display: block
+        width: 38px
+        list-style: none
+        padding: 2px 0 0
+        position: absolute
+
+        li a
+            font-weight: bold
+            text-decoration: none !important
+            color: $light
+            display: block
+            text-align: center
+
+            &.active
+                color: $dark
+
+            &:hover
+                color: $dark

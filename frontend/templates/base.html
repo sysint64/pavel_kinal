@@ -1,17 +1,63 @@
 {% load staticfiles %}
+{% load compress %}
+{% load i18n %}
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}Аллюминий{% endblock %}</title>
+    <title>{% block title %}{% trans "Pavel Kinal" %}{% endblock %}</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa:300,400,700&amp;subset=cyrillic" rel="stylesheet">
 
     {% block styles %}
+        {% compress css %}
+            <link href="{% static "styles/index.sass" %}" rel="stylesheet" type="text/x-sass">
+        {% endcompress %}
     {% endblock %}
 </head>
 <body>
-    {% block content %}
+    {% block header %}
+        <div id="header">
+            <img src="{% static "images/text_logo.svg" %}" id="text_logo">
+            <img src="{% static "images/logo.svg" %}" id="logo">
+
+            <ul id="language_select">
+                <li><a href="#" class="active">EN</a></li>
+                <li><a href="#">RU</a></li>
+            </ul>
+
+            <ul id="header__social_links">
+                <li><a href="#"><img src="{% static "images/yt.svg" %}"></a></li>
+                <li><a href="#"><img src="{% static "images/vk.svg" %}"></a></li>
+                <li><a href="#"><img src="{% static "images/fb.svg" %}"></a></li>
+                <li><a href="#"><img src="{% static "images/ig.svg" %}"></a></li>
+                <li><a href="#"><img src="{% static "images/tw.svg" %}"></a></li>
+                <li><a href="#"><img src="{% static "images/twitch.svg" %}"></a></li>
+                <li><a href="#"><img src="{% static "images/sc.svg" %}"></a></li>
+                <li><a href="#"><img src="{% static "images/donate.svg" %}"></a></li>
+            </ul>
+        </div>
     {% endblock %}
+
+    {% block menu %}
+        <ul id="main_menu">
+            <li>{% trans "Music" %}</li>
+            <li>{% trans "Video" %}</li>
+            <li>{% trans "Gear" %}</li>
+            <li>{% trans "Tab" %}</li>
+            <li>{% trans "Bio" %}</li>
+            <li>{% trans "Photo" %}</li>
+            <li>{% trans "Merch" %}</li>
+            <li>{% trans "Tuning" %}</li>
+            <li>{% trans "Contact" %}</li>
+        </ul>
+    {% endblock %}
+
+    <div id="content_block">
+        {% block content %}
+        {% endblock %}
+    </div>
 
     {% block js %}
     {% endblock %}
