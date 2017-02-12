@@ -12,11 +12,19 @@
 
     {% block styles %}
         {% compress css %}
+            <link href="{% static "fonts/vectors.css" %}" rel="stylesheet" type="text/css">
             <link href="{% static "styles/index.sass" %}" rel="stylesheet" type="text/x-sass">
         {% endcompress %}
     {% endblock %}
 </head>
 <body>
+    <div id="greeter">
+        <button id="greeter__welcome_button">
+            <span class="text">Welcome!</span>
+            <span class="click_here">(Click here)</span>
+        </button>
+    </div>
+
     {% block header %}
         <div id="header">
             <img src="{% static "images/text_logo.svg" %}" id="text_logo">
@@ -28,38 +36,42 @@
             </ul>
 
             <ul id="header__social_links">
-                <li><a href="#"><img src="{% static "images/yt.svg" %}"></a></li>
-                <li><a href="#"><img src="{% static "images/vk.svg" %}"></a></li>
-                <li><a href="#"><img src="{% static "images/fb.svg" %}"></a></li>
-                <li><a href="#"><img src="{% static "images/ig.svg" %}"></a></li>
-                <li><a href="#"><img src="{% static "images/tw.svg" %}"></a></li>
-                <li><a href="#"><img src="{% static "images/twitch.svg" %}"></a></li>
-                <li><a href="#"><img src="{% static "images/sc.svg" %}"></a></li>
-                <li><a href="#"><img src="{% static "images/donate.svg" %}"></a></li>
+                <li><a href="#" class="icon-yt"></a></li>
+                <li><a href="#" class="icon-vk"></a></li>
+                <li><a href="#" class="icon-fb"></a></li>
+                <li><a href="#" class="icon-ig"></a></li>
+                <li><a href="#" class="icon-tw"></a></li>
+                <li><a href="#" class="icon-twitch"></a></li>
+                <li><a href="#" class="icon-sc"></a></li>
+                <li><a href="#" class="icon-donate"></a></li>
             </ul>
         </div>
     {% endblock %}
 
-    {% block menu %}
-        <ul id="main_menu">
-            <li>{% trans "Music" %}</li>
-            <li>{% trans "Video" %}</li>
-            <li>{% trans "Gear" %}</li>
-            <li>{% trans "Tab" %}</li>
-            <li>{% trans "Bio" %}</li>
-            <li>{% trans "Photo" %}</li>
-            <li>{% trans "Merch" %}</li>
-            <li>{% trans "Tuning" %}</li>
-            <li>{% trans "Contact" %}</li>
-        </ul>
-    {% endblock %}
-
-    <div id="content_block">
-        {% block content %}
+    <div class="container">
+        {% block menu %}
+            <ul id="main_menu">
+                <li><a href="#">{% trans "Music" %}</a></li>
+                <li><a href="#">{% trans "Video" %}</a></li>
+                <li><a href="#">{% trans "Gear" %}</a></li>
+                <li><a href="#">{% trans "Tab" %}</a></li>
+                <li><a href="#">{% trans "Bio" %}</a></li>
+                <li><a href="#">{% trans "Photo" %}</a></li>
+                <li><a href="#">{% trans "Merch" %}</a></li>
+                <li><a href="#">{% trans "Tuning" %}</a></li>
+                <li><a href="#">{% trans "Contact" %}</a></li>
+            </ul>
         {% endblock %}
+
+        <div id="content_block">
+            {% block content %}
+            {% endblock %}
+        </div>
     </div>
 
     {% block js %}
+        <script src="{% static 'vendor/jquery-3.1.1.min.js' %}" charset="utf-8"></script>
+        <script src="{% static 'js/main.js' %}" charset="utf-8"></script>
     {% endblock %}
 </body>
 </html>

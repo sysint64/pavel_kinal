@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'compressor',
+    'svg',
 ]
 
 MIDDLEWARE = [
@@ -110,6 +111,10 @@ STATICFILES_FINDERS = [
 STATICFILES_DIRS = (
     os.path.join(FRONTEND_ROOT, 'static'),
 )
+
+SVG_DIRS=[
+    os.path.join(FRONTEND_ROOT, 'static'),
+]
 
 COMPRESS_PRECOMPILERS = (
     ('text/x-sass', os.environ.get("SASSC_BIN", "sassc")+' --style compressed {infile} {outfile}'),

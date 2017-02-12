@@ -4,11 +4,6 @@ __pycache__
 TAGS
 .idea
 *.mo
-var/*/*/*
-var/static/*
-!var/*/.keep
-!var/*/*/.keep
-!var/*/*/*/.keep
-!var/locale/ru/LC_MESSAGES/
-src/server/settings/local.py
+var
 node_modules
+db.sqlite3
