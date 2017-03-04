@@ -18,12 +18,8 @@
     {% endblock %}
 </head>
 <body>
-    <div id="greeter">
-        <button id="greeter__welcome_button">
-            <span class="text">Welcome!</span>
-            <span class="click_here">(Click here)</span>
-        </button>
-    </div>
+    {% block start_body %}
+    {% endblock %}
 
     {% block header %}
         <div id="header">
@@ -51,22 +47,22 @@
     <div class="container">
         {% block menu %}
             <ul id="main_menu">
-                <li><a href="#">{% trans "Music" %}</a></li>
-                <li><a href="#">{% trans "Video" %}</a></li>
-                <li><a href="#">{% trans "Gear" %}</a></li>
-                <li><a href="#">{% trans "Tab" %}</a></li>
-                <li><a href="#">{% trans "Bio" %}</a></li>
-                <li><a href="#">{% trans "Photo" %}</a></li>
-                <li><a href="#">{% trans "Merch" %}</a></li>
-                <li><a href="#">{% trans "Tuning" %}</a></li>
-                <li><a href="#">{% trans "Contact" %}</a></li>
+                {% for item in menu_items %}
+                    <li>
+                        <a href="{% url item.url_name %}"{% if current_url_name == item.url_name %} class="active"{% endif %}>
+                            {% trans item.name %}
+                        </a>
+                    </li>
+                {% endfor %}
             </ul>
         {% endblock %}
 
-        <div id="content_block">
-            {% block content %}
-            {% endblock %}
-        </div>
+        {% block content_block %}
+            <div id="content_block">
+                {% block content %}
+                {% endblock %}
+            </div>
+        {% endblock %}
     </div>
 
     {% block js %}

@@ -1,4 +1,4 @@
-from server.settings.base import *
+from pavel_kinal.settings.base import *
 
 DEBUG = True
 SECRET_KEY = 'demo'

@@ -30,8 +30,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     'compressor',
-    'svg',
+    'easy_thumbnails',
+
+    'pavel_kinal.music.apps.MusicConfig'
 ]
 
 MIDDLEWARE = [
@@ -44,7 +47,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'urls'
+ROOT_URLCONF = 'pavel_kinal.urls'
 
 TEMPLATES = [
     {
@@ -64,7 +67,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'server.wsgi.application'
+WSGI_APPLICATION = 'pavel_kinal.wsgi.application'
 
 
 # Password validation

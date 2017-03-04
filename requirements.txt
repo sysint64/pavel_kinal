@@ -8,3 +8,4 @@ raven==5.32.0
 gunicorn==19.6.0
 libsass
 django-inline-svg
+easy_thumbnails==2.3
