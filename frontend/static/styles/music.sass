@@ -73,3 +73,118 @@ h2
                 font-size: 30px
                 padding-top: 7px
                 padding-left: 8px
+
+    .time-track
+        position: relative
+        .current, .end
+            position: absolute
+            color: $light
+            top: -7px
+            font-size: 19px
+            text-align: center
+            width: 50px
+
+        .current
+            left: 50px
+
+        .end
+            right: 72px
+
+    .slider
+        width: 202px
+        margin-left: 104px
+        margin-top: 13px
+        height: 4px
+        border: none !important
+        background: $light
+
+        .dark
+            background: $dark
+            height: 4px
+            position: absolute
+            width: 0
+            border-radius: 3px
+
+    .ui-slider-handle.ui-corner-all.ui-state-default
+        border-radius: 100%
+        background: $dark
+        border: none
+        width: 15px
+        height: 15px
+        margin-top: -1px
+        margin-left: -6px
+        outline: none !important
+
+.track-list
+    position: relative
+    margin-left: 85px
+    margin-top: 43px
+    width: 295px
+
+    .track-item
+        position: relative
+        height: 25px
+        cursor: default
+
+    .left
+        position: absolute
+        left: -1px
+        top: 0
+        font-size: 17px
+        color: $light
+        text-align: center
+        width: 30px
+
+        .text
+            display: block
+            margin-top: 1px
+
+        .icon-play
+            display: none
+            color: $light
+            cursor: pointer
+
+            &:hover
+                color: $dark
+
+    .name
+        color: $dark
+        position: absolute
+        left: 29px
+        top: 0
+        font-size: 18px
+        font-weight: bold
+
+    .right
+        position: absolute
+        top: 0
+        right: 0
+        width: 80px
+
+        .length
+            color: $light
+            font-size: 18px
+            text-align: right
+            padding-right: 6px
+
+        .price
+            display: none
+            font-size: 18px
+            position: inherit
+            top: inherit
+            left: inherit
+
+    .track-item:hover, .track-item.active
+        .left .text
+            display: none
+
+        .left .icon-play
+            display: block
+
+        .right .length
+            display: none
+
+        .right .price
+            display: block
+
+

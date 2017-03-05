@@ -9,6 +9,9 @@ class Album(models.Model):
 
 
 class Track(models.Model):
+    class Meta:
+        default_related_name = "tracks"
+
     name = models.CharField(max_length=255)
     price = models.FloatField()
     album = models.ForeignKey(Album)

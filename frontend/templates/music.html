@@ -11,6 +11,13 @@
 {% block styles %}
     {{ block.super }}
     <link href="{% static "styles/music.sass" %}" rel="stylesheet" type="text/x-sass">
+    <link href="{% static "vendor/jquery-ui.min.css" %}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block js %}
+    {{ block.super }}
+    <script src="{% static "vendor/jquery-ui.min.js" %}" type="text/javascript"></script>
+    <script src="{% static "js/music.js" %}" type="text/javascript"></script>
 {% endblock %}
 
 {% block content %}
@@ -28,13 +35,33 @@
                 <img src="{% thumbnail album.cover 300x300 crop %}" class="cover">
                 <a class="price">
                     ${{ album.price }}
-                    <span href="#" class="icon-download"></span>
+                    <a class="icon-download"></a>
                 </a>
                 <h2>{{ album.name }}</h2>
                 {% include "music_player.html" %}
-                {% for track in album.tracks %}
 
-                {% endfor %}
+                <div class="track-list">
+                    {% for track in album.tracks.all %}
+                        <div class="track-item">
+                            <div class="left">
+                                <span class="text">{{ forloop.counter }}.</span>
+                                <span class="icon-play"></span>
+                            </div>
+                            <div class="name">
+                                {{ track.name }}
+                            </div>
+                            <div class="right">
+                                <div class="length">
+                                    4:10
+                                </div>
+                                <a class="price">
+                                    $ {{ track.price }}
+                                    <span class="icon-download"></span>
+                                </a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
             </div>
         {% endfor %}
     <div class="clearfix"></div>
