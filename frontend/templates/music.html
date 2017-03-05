@@ -1,23 +1,42 @@
 {% extends 'base.html' %}
 
 {% load staticfiles %}
+{% load thumbnail %}
 
 {% block title %}
     {{ block.super }}
     Привет мир
 {% endblock %}
 
-{% block js %}
-    {{ block.super }}
-{% endblock %}
-
 {% block styles %}
     {{ block.super }}
-
-    {# Пример добавления sass файла #}
-    <link href="{% static "styles/blank.sass" %}" rel="stylesheet" type="text/typescript">
+    <link href="{% static "styles/music.sass" %}" rel="stylesheet" type="text/x-sass">
 {% endblock %}
 
 {% block content %}
-    Hello world
+    <h1 class="hidden">Music</h1>
+    <img class="h1" src="{% static "images/h1/music.svg" %}">
+
+    <div>
+        {% for album in albums %}
+            {% if forloop.counter0|divisibleby:2 %}
+                <div class="clearfix"></div>
+                </div>
+                <div>
+            {% endif %}
+            <div class="col">
+                <img src="{% thumbnail album.cover 300x300 crop %}" class="cover">
+                <a class="price">
+                    ${{ album.price }}
+                    <span href="#" class="icon-download"></span>
+                </a>
+                <h2>{{ album.name }}</h2>
+                {% include "music_player.html" %}
+                {% for track in album.tracks %}
+
+                {% endfor %}
+            </div>
+        {% endfor %}
+    <div class="clearfix"></div>
+    </div>
 {% endblock %}

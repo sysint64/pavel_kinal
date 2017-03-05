@@ -1,6 +1,8 @@
 from django.shortcuts import render_to_response
 from django.core.urlresolvers import resolve
 
+from pavel_kinal.music.models import Album
+
 
 def main_context(request, context=None):
     if context is None:
@@ -33,7 +35,10 @@ def index(request):
 
 
 def music(request):
-    return render_to_response("music.html", context=main_context(request))
+    context = {
+        "albums": Album.objects.all()[:2]
+    }
+    return render_to_response("music.html", context=main_context(request, context))
 
 
 def empty(request):

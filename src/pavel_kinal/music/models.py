@@ -11,3 +11,4 @@ class Album(models.Model):
 class Track(models.Model):
     name = models.CharField(max_length=255)
     price = models.FloatField()
+    album = models.ForeignKey(Album)

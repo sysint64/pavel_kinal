@@ -1,0 +1,75 @@
+@import "consts.sass"
+
+.cover
+    border: 2px solid $dark
+    width: 293px
+    margin-left: 56px
+    border-radius: 20px
+
+h2
+    text-align: center
+    margin-right: 21px
+    margin-top: 6px
+    margin-bottom: 0
+
+.price
+    position: absolute
+    top: 20px
+    right: 0
+    font-size: 20px
+    color: $light
+    cursor: pointer
+
+    &:hover
+        color: $dark
+
+    .text
+        float: left
+
+    .icon-download
+        margin-right: 4px
+        margin-top: -1px
+        float: right
+
+
+.music-player
+    .nav
+        margin-left: 74px
+        button
+            float: left
+            border: 2px solid $light
+            border-radius: 10px
+            color: $light
+            background: none
+            padding-top: 5px
+            margin-left: 6px
+            margin-right: 6px
+            outline: none !important
+
+            &:hover
+                background-color: $light
+                color: $background
+
+            &.shuffle-queue, &.loop-track
+                width: 33px
+                height: 33px
+                margin-top: 17px
+                font-size: 17px
+
+                span
+                    padding-top: 2px
+
+            &.previous-track, &.next-track
+                margin-top: 12px
+                width: 41px
+                height: 41px
+                font-size: 21px
+
+            &.toggle-track
+                margin-top: 7px
+                margin-left: 8px
+                width: 52px
+                height: 52px
+                font-size: 30px
+                padding-top: 7px
+                padding-left: 8px
