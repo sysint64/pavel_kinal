@@ -36,7 +36,7 @@ def index(request):
 
 def music(request):
     context = {
-        "albums": Album.objects.all()[:2]
+        "albums": Album.objects.all().order_by("-datetime")
     }
     return render_to_response("music.html", context=main_context(request, context))
 

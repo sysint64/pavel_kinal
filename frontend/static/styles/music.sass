@@ -174,17 +174,22 @@ h2
             top: inherit
             left: inherit
 
-    .track-item:hover, .track-item.active
-        .left .text
-            display: none
-
-        .left .icon-play
-            display: block
-
+    .track-item:hover
         .right .length
             display: none
 
         .right .price
             display: block
 
+    .track-item:hover, .track-item.playing
+        .left .text
+            display: none
 
+        .left .icon-play
+            display: block
+
+
+// AudioJS Player
+
+.audiojs
+    display: none
