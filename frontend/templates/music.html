@@ -18,7 +18,7 @@
     {{ block.super }}
     <script src="{% static "vendor/jquery-ui.min.js" %}" type="text/javascript"></script>
     <script src="{% static "vendor/audiojs/audio.min.js" %}" type="text/javascript"></script>
-    <script src="{% static "js/music.js" %}" type="text/javascript"></script>
+    <script src="{% static "js/music2.js" %}" type="text/javascript"></script>
 {% endblock %}
 
 {% block content %}
@@ -26,13 +26,13 @@
     <img class="h1" src="{% static "images/h1/music.svg" %}">
 
     <div>
-        {% for album in albums  %}
+        {% for album in albums %}
             {% if forloop.counter0|divisibleby:2 %}
                 <div class="clearfix"></div>
                 </div>
                 <div class="row">
             {% endif %}
-            <div class="col">
+            <div class="col player-container">
                 <img src="{% thumbnail album.cover 300x300 crop %}" class="cover">
                 <a class="price">
                     {% if album.price == 0 %}
@@ -46,39 +46,49 @@
 
 {#                {% include "music_player.html" %}#}
 
-                <div class="music-player" id="player_album_{{ album.pk }}" data-audio="audio_album_{{ album.pk }}">
+                <div class="music-player"
+                     data-src="{{ album.tracks.first.file.url }}"
+                     id="player_album_{{ album.pk }}"
+                     data-audio="audio_album_{{ album.pk }}">
                     <div class="nav">
                         <button class="icon-random shuffle-queue"></button>
                         <button class="icon-previous-track previous-track"></button>
-                        <button class="icon-play toggle-track"></button>
+                        <button class="icon-play-pause toggle-track"></button>
                         <button class="icon-next-track next-track"></button>
                         <button class="icon-reply loop-track"></button>
                         <div class="clearfix"></div>
                     </div>
                     <div class="time-track">
-                        <div class="current">2:52</div>
-                        <div class="end">5:30</div>
+                        <div class="current">0:00</div>
+                        <div class="end">{{ album.tracks.first.duration }}</div>
                         <div class="slider">
                             <div class="dark"></div>
                         </div>
                     </div>
                 </div>
 
-                <audio preload id="audio_album_{{ album.pk }}" data-player="player_album_{{ album.pk }}"></audio>
+                <audio preload id="audio_album_{{ album.pk }}"
+                       data-album-id="{{ album.pk }}"
+                       data-player="player_album_{{ album.pk }}">
+                </audio>
 
                 <div class="track-list">
                     {% for track in album.tracks.all %}
-                        <div class="track-item" data-src="{{ track.file.url }}" data-audio="audio_album_{{ album.pk }}">
+                        <div class="track-item"
+                             data-index="{{ forloop.counter0 }}"
+                             data-src="{{ track.file.url }}"
+                             data-audio="audio_album_{{ album.pk }}"
+                        >
                             <div class="left">
                                 <span class="text">{{ forloop.counter }}.</span>
-                                <span class="icon-play"></span>
+                                <span class="icon-play-pause"></span>
                             </div>
                             <div class="name">
                                 {{ track.name }}
                             </div>
                             <div class="right">
                                 <div class="length">
-                                    4:10
+                                    {{ track.duration }}
                                 </div>
                                 <a class="price">
                                     {% if track.price == 0 %}

@@ -56,6 +56,14 @@ h2
                 margin-top: 17px
                 font-size: 17px
 
+                &:hover
+                    background-color: $background
+                    color: $light
+
+                &.active
+                    background-color: $light !important
+                    color: $background !important
+
                 span
                     padding-top: 2px
 
@@ -73,6 +81,15 @@ h2
                 font-size: 30px
                 padding-top: 7px
                 padding-left: 8px
+
+    .icon-play-pause
+        &:before
+            font-family: 'vectors'
+            content: '\004f'
+
+        &.playing:before
+            font-family: 'vectors'
+            content: '\004e'
 
     .time-track
         position: relative
@@ -139,10 +156,14 @@ h2
             display: block
             margin-top: 1px
 
-        .icon-play
+        .icon-play-pause
             display: none
             color: $light
             cursor: pointer
+
+            &:before
+                font-family: 'vectors'
+                content: '\004f'
 
             &:hover
                 color: $dark
@@ -181,12 +202,18 @@ h2
         .right .price
             display: block
 
-    .track-item:hover, .track-item.playing
+    .track-item:hover, .track-item.playing, .track-item.current
         .left .text
             display: none
 
-        .left .icon-play
+        .left .icon-play-pause
             display: block
+
+    .track-item.playing
+        .left .icon-play-pause
+            &:before
+                font-family: 'vectors'
+                content: '\004e'
 
 
 // AudioJS Player

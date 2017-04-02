@@ -18,3 +18,4 @@ class Track(models.Model):
     price = models.FloatField()
     album = models.ForeignKey(Album)
     file = models.FileField(upload_to="music/", blank=True)
+    duration = models.CharField(max_length=4, default="0:00")

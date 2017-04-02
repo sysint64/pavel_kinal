@@ -1,6 +1,11 @@
 (function($) {
     var audios = [];
     var trackClicked = [];
+    var shuffle = [];
+    var repeat = [];
+    var currentAudio = null;
+    var $lastTrack = null;
+    var $lastSrc = "";
 
     $(".slider").slider({
         slide: function(event, ui) {
@@ -20,13 +25,19 @@
     });
 
     function isTrackClicked($player) {
-        console.log(trackClicked);
-        console.log($player.attr("id"));
         return trackClicked[$player.attr("id")];
     }
 
     function getAudio($player) {
         return audios[$player.data("audio")];
+    }
+
+    function setShuffle($player, value) {
+        shuffle[$player.data("audio")] = value;
+    }
+
+    function setRepeat($player, value) {
+        repeat[$player.data("audio")] = value;
     }
 
     function getPlayerNav(audio) {
@@ -37,19 +48,63 @@
     function pauseAll() {
         $(".playing").removeClass("playing");
 
-        audios.forEach(function(item, i, arr) {
-            item.pause();
-        });
+        if (currentAudio != null)
+            currentAudio.pause();
     }
 
     $(".track-item .left").click(function() {
-        pauseAll();
+        const $toggleTrackButton = $(this).closest(".col").find(".toggle-track");
         const $parent = $(this).closest(".track-item");
-        $parent.addClass("playing");
         const audio = getAudio($parent);
+        $lastTrack = $(this);
+        $(".track-item.current").removeClass("current");
+        $parent.addClass("current");
 
-        audio.load($parent.data("src"));
+        if ($parent.hasClass("playing")) {
+            pauseAll();
+            return;
+        }
+
+        pauseAll();
+        $toggleTrackButton.addClass("playing");
+        $parent.addClass("playing");
+
+        currentAudio = audio;
+
+        if ($lastSrc != $parent.data("src")) {
+            audio.load($parent.data("src"));
+            $lastSrc = $parent.data("src");
+        }
+
         audio.play();
+    });
+
+    $(".toggle-track").click(function() {
+        const $parent = $(this).closest(".music-player");
+        const audio = getAudio($parent);
+        $(this).toggleClass("playing");
+        // audio.playPause();
+        $lastTrack.trigger("click");
+    });
+
+    $(".shuffle-queue").click(function() {
+        $(this).toggleClass("active");
+        const $parent = $(this).closest(".music-player");
+        setShuffle($parent, $(this).hasClass("active"));
+    });
+
+    $(".loop-track").click(function() {
+        $(this).toggleClass("active");
+        const $parent = $(this).closest(".music-player");
+        setRepeat($parent, $(this).hasClass("active"));
+    });
+
+    $(".next-track").click(function () {
+
+    });
+
+    $(".previous-track").click(function () {
+
     });
 
     audiojs.events.ready(function() {
@@ -78,7 +133,16 @@
         });
 
         a.forEach(function(item, i, arr) {
-            audios[$(item.element).attr("id")] = item;
+            const audioId = $(item.element).attr("id");
+            const albumId = $(item.element).data("album-id");
+            const parentId = "player_album_" + albumId;
+
+            console.log(audioId);
+            console.log(parentId);
+            item.load($("#"+parentId).data("src"));
+            audios[audioId] = item;
+            shuffle[audioId] = false;
+            repeat[audioId] = false;
         });
     });
 })(jQuery);
