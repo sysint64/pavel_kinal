@@ -1,17 +1,25 @@
-<div class="music-player">
+<div class="music-player"
+     data-src="{{ album.tracks.first.file.url }}"
+     id="player_album_{{ album.pk }}"
+     data-audio="audio_album_{{ album.pk }}">
     <div class="nav">
         <button class="icon-random shuffle-queue"></button>
         <button class="icon-previous-track previous-track"></button>
-        <button class="icon-play toggle-track"></button>
+        <button class="icon-play-pause toggle-track"></button>
         <button class="icon-next-track next-track"></button>
         <button class="icon-reply loop-track"></button>
         <div class="clearfix"></div>
     </div>
     <div class="time-track">
-        <div class="current">2:52</div>
-        <div class="end">5:30</div>
+        <div class="current">0:00</div>
+        <div class="end">{{ album.tracks.first.duration }}</div>
         <div class="slider">
             <div class="dark"></div>
         </div>
     </div>
 </div>
+
+<audio preload id="audio_album_{{ album.pk }}"
+       data-album-id="{{ album.pk }}"
+       data-player="player_album_{{ album.pk }}">
+</audio>

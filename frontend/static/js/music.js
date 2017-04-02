@@ -263,7 +263,7 @@
 // AudioJS -----------------------------------------------------------------------------------------
 
     audiojs.events.ready(function() {
-        var a = audiojs.createAll({
+        var audioList = audiojs.createAll({
             css: "",
 
             loadStarted: function() {
@@ -282,7 +282,7 @@
             }
         });
 
-        a.forEach(function(item, i, arr) {
+        audioList.forEach(function(item, i, arr) {
             const audioId = $(item.element).attr("id");
             const $container = $(item.element).closest(".player-container");
 
