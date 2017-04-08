@@ -31,6 +31,25 @@
             }
         });
 
+        // Регулятор громкости
+        $container.find(".volume").slider({
+            slide: function(event, ui) {
+                $(this).find(".dark").css("width", ui.value+"%");
+                player.audio.setVolume(ui.value / 100);
+            },
+            start: function(event, ui) {
+
+            },
+            stop: function(event, ui) {
+                player.audio.setVolume(ui.value / 100);
+            },
+            create: function(event, ui){
+                $(this).slider('value', 100);
+                $(this).find(".dark").css("width", "100%");
+                player.audio.setVolume(1);
+            }
+        });
+
         var $track = this.$lastTrack;
         var index = 0;
 
