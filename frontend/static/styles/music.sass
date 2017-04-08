@@ -2,23 +2,39 @@
 
 .cover
     border: 2px solid $dark
-    width: 293px
-    margin-left: 56px
+    width: 249px
+    margin-left: 47px
     border-radius: 20px
+
+    @media (min-width: $min-width-wide)
+        margin-left: 56px
+        width: 293px
 
 h2
     text-align: center
-    margin-right: 21px
-    margin-top: 6px
+    margin-right: 70px
+    margin-top: 5px
     margin-bottom: 0
+    font-size: 24px
+
+    @media (min-width: $min-width-wide)
+        margin-right: 21px
+        margin-top: 6px
+        margin-bottom: 0
+        font-size: 20px
 
 .price
     position: absolute
-    top: 20px
-    right: 0
-    font-size: 20px
     color: $light
     cursor: pointer
+    top: 42px
+    right: 38px
+    font-size: 19px
+
+    @media (min-width: $min-width-wide)
+        top: 20px
+        right: 0
+        font-size: 20px
 
     &:hover
         color: $dark
@@ -31,10 +47,21 @@ h2
         margin-top: -1px
         float: right
 
+.player-container
+    padding-top: 25px
+
+    @media (min-width: $min-width-wide)
+        padding-top: 0
 
 .music-player
     .nav
-        margin-left: 74px
+        margin-left: 63px
+        margin-top: -4px
+
+        @media (min-width: $min-width-wide)
+            margin-left: 74px
+            margin-top: 0
+
         button
             float: left
             border: 2px solid $light
@@ -42,19 +69,32 @@ h2
             color: $light
             background: none
             padding-top: 5px
-            margin-left: 6px
-            margin-right: 6px
+            margin-left: 4px
+            margin-right: 4px
             outline: none !important
+
+            @media (min-width: $min-width-wide)
+                margin-left: 6px
+                margin-right: 6px
 
             &:hover
                 background-color: $light
                 color: $background
 
             &.shuffle-queue, &.loop-track
-                width: 33px
-                height: 33px
+                width: 28px
+                height: 28px
+                font-size: 16px
                 margin-top: 17px
-                font-size: 17px
+                padding-left: 4px
+                padding-top: 4px
+
+                @media (min-width: $min-width-wide)
+                    width: 33px
+                    height: 33px
+                    font-size: 17px
+                    padding-left: 6px
+                    padding-top: 5px
 
                 &:hover
                     background-color: $background
@@ -69,18 +109,28 @@ h2
 
             &.previous-track, &.next-track
                 margin-top: 12px
-                width: 41px
-                height: 41px
-                font-size: 21px
+                width: 37px
+                height: 37px
+                font-size: 19px
+
+                @media (min-width: $min-width-wide)
+                    width: 41px
+                    height: 41px
+                    font-size: 21px
 
             &.toggle-track
                 margin-top: 7px
                 margin-left: 8px
-                width: 52px
-                height: 52px
-                font-size: 30px
                 padding-top: 7px
                 padding-left: 8px
+                width: 45px
+                height: 45px
+                font-size: 26px
+
+                @media (min-width: $min-width-wide)
+                    width: 52px
+                    height: 52px
+                    font-size: 30px
 
     .icon-play-pause
         &:before
@@ -96,24 +146,39 @@ h2
         .current, .end
             position: absolute
             color: $light
-            top: -7px
-            font-size: 19px
             text-align: center
             width: 50px
+            top: -6px
+            font-size: 16px
+
+            @media (min-width: $min-width-wide)
+                top: -7px
+                font-size: 19px
 
         .current
-            left: 50px
+            left: 40px
+
+            @media (min-width: $min-width-wide)
+                left: 50px
 
         .end
-            right: 72px
+            right: 109px
+
+            @media (min-width: $min-width-wide)
+                right: 72px
 
     .slider
-        width: 202px
-        margin-left: 104px
-        margin-top: 13px
         height: 4px
         border: none !important
         background: $light
+        width: 172px
+        margin-left: 87px
+        margin-top: 9px
+
+        @media (min-width: $min-width-wide)
+            width: 202px
+            margin-left: 104px
+            margin-top: 13px
 
         .dark
             background: $dark
@@ -136,51 +201,73 @@ h2
         border: none !important
         background: none
         width: 35px
-        font-size: 18px
-        margin: 14px auto auto
-        height: 18px
+        height: 15px
         position: relative
+        font-size: 16px
+        margin: 13px 164px auto
+
+        @media (min-width: $min-width-wide)
+            font-size: 18px
+            margin: 14px auto auto
+            height: 18px
 
         .icon-vol
             position: absolute
-            left: -20px
+            left: -18px
             top: -1px
             color: $light
 
         .dark
             background: $light
-            height: 18px
+            height: 15px
             position: absolute
             width: 0
+
+            @media (min-width: $min-width-wide)
+                height: 18px
 
         .foreground
             position: absolute
             width: 100%
-            height: 18px
+            height: 15px
             background: url("../images/vol_foreground.png")
+
+            @media (min-width: $min-width-wide)
+                height: 18px
 
         .ui-slider-handle.ui-corner-all.ui-state-default
             display: none
 
 .track-list
     position: relative
-    margin-left: 85px
-    margin-top: 12px
-    width: 295px
+    margin-left: 69px
+    margin-top: 10px
+    width: 235px
+
+    @media (min-width: $min-width-wide)
+        margin-left: 85px
+        margin-top: 12px
+        width: 295px
 
     .track-item
         position: relative
-        height: 25px
+        height: 21px
         cursor: default
+
+        @media (min-width: $min-width-wide)
+            height: 25px
 
     .left
         position: absolute
         left: -1px
         top: 0
-        font-size: 17px
+        font-size: 15px
         color: $light
         text-align: center
         width: 30px
+
+        @media (min-width: $min-width-wide)
+            font-size: 17px
 
         .text
             display: block
@@ -201,10 +288,14 @@ h2
     .name
         color: $dark
         position: absolute
-        left: 29px
+        left: 27px
         top: 0
-        font-size: 18px
+        font-size: 16px
         font-weight: bold
+
+        @media (min-width: $min-width-wide)
+            font-size: 18px
+            left: 29px
 
     .right
         position: absolute
@@ -214,16 +305,23 @@ h2
 
         .length
             color: $light
-            font-size: 18px
+            font-size: 16px
             text-align: right
             padding-right: 6px
 
+            @media (min-width: $min-width-wide)
+                font-size: 18px
+
         .price
             display: none
-            font-size: 18px
+            font-size: 16px
             position: inherit
             top: inherit
             left: inherit
+            right: 0
+
+            @media (min-width: $min-width-wide)
+                font-size: 18px
 
     .track-item:hover
         .right .length
