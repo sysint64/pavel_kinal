@@ -22,3 +22,7 @@ DATABASES = {
 LOCALE_PATHS = (
     os.path.join(VAR_ROOT, 'locale'),
 )
+
+COMPRESS_PRECOMPILERS = (
+    ('text/x-sass', "sassc"+' --style compressed {infile} {outfile}'),
+)

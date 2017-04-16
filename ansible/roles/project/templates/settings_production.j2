@@ -1,4 +1,4 @@
-from humaniq.settings.base import *
+from {{ project_namespace }}.settings.base import *
 
 {% if project_dir != "" %}
 VAR_ROOT = "{{ project_dir }}"
@@ -30,4 +30,8 @@ DATABASES = {
 
 LOCALE_PATHS = (
     os.path.join(VAR_ROOT, 'locale'),
+)
+
+COMPRESS_PRECOMPILERS = (
+    ('text/x-sass', "{{ project_virtualenv_dir }}/bin/sassc"+' --style compressed {infile} {outfile}'),
 )

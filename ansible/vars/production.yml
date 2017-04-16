@@ -23,5 +23,6 @@ git_branch: "master"
 git_ssh_key: "/var/www/.ssh/id_rsa"
 
 # Django
-allowed_host: "pavelkinal.com"
+project_namespace: "pavel_kinal"
+allowed_host: "*"
 DJANGO_SETTINGS_MODULE: "pavel_kinal.settings.production"

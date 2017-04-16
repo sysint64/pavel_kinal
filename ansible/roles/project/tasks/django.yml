@@ -8,14 +8,17 @@
     - restart gunicorn
 
 - name: copy settings config
-  template: src=settings_{{ server_type }}.j2 dest={{ project_work_tree }}/src/humaniq/settings/{{ server_type }}.py
+  become_user: "{{ project_linux_user }}"
+  template: src=settings_{{ server_type }}.j2 dest={{ project_work_tree }}/src/{{ project_namespace }}/settings/{{ server_type }}.py
   notify:
     - restart gunicorn
 
 - name: migrate
+  become_user: "{{ project_linux_user }}"
   command: "{{ project_virtualenv_dir }}/bin/python {{ project_work_tree }}/src/manage.py migrate --noinput"
   notify:
     - restart gunicorn
 
 - name: collectstatic
+  become_user: "{{ project_linux_user }}"
   command: "{{ project_virtualenv_dir }}/bin/python {{ project_work_tree }}/src/manage.py collectstatic --noinput"

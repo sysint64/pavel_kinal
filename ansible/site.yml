@@ -12,7 +12,7 @@
 
   vars_files:
     - vars/production.yml
-#    - vars/access.yml
+    - vars/secret.yml
 
   environment:
     DJANGO_SETTINGS_MODULE: "pavel_kinal.settings.production"

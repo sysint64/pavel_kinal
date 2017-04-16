@@ -118,8 +118,3 @@ STATICFILES_DIRS = (
 SVG_DIRS=[
     os.path.join(FRONTEND_ROOT, 'static'),
 ]
-
-COMPRESS_PRECOMPILERS = (
-    ('text/x-sass', os.environ.get("SASSC_BIN", "sassc")+' --style compressed {infile} {outfile}'),
-    ('text/typescript', os.environ.get("TSC_BIN", "my-tsc")+' {infile} {outfile}'),
-)
