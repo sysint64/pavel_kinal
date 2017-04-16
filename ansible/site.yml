@@ -1,0 +1,22 @@
+---
+#- name: install applications
+#  hosts: webserver
+#  remote_user: ubuntu
+#
+#  roles:
+#    - apt
+
+- name: init project for staging
+  hosts: webserver
+  remote_user: ubuntu
+
+  vars_files:
+    - vars/production.yml
+#    - vars/access.yml
+
+  environment:
+    DJANGO_SETTINGS_MODULE: "pavel_kinal.settings.production"
+
+  roles:
+    - web
+    - project

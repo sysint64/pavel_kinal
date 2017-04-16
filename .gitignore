@@ -7,3 +7,6 @@ TAGS
 var
 node_modules
 db.sqlite3
+ansible/hosts
+ansible/site.retry
+ansible/vars/secret.yml

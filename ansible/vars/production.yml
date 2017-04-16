@@ -1,0 +1,27 @@
+---
+
+server_type: "production"
+nginx_host: "localhost"
+nginx_port: "12340"
+nginx_server_name: "pavelkinal.com"
+nginx_scheme: "http"
+
+project_linux_user: "www-data"
+project_linux_group: "www-data"
+
+project_dir: "/var/www/production"
+project_virtualenv_dir: "{{ project_dir }}/venv"
+project_static_media_dir: "{{ project_dir }}/static_media"
+project_work_tree: "{{ project_dir }}/work_tree"
+
+nginx_config_name: "production.conf"
+env_name: "production"
+gunicorn_service_name: "production_gunicorn"
+
+git_repo: "git@bitbucket.org:sys_int64/pavel_kinal.git"
+git_branch: "master"
+git_ssh_key: "/var/www/.ssh/id_rsa"
+
+# Django
+allowed_host: "pavelkinal.com"
+DJANGO_SETTINGS_MODULE: "pavel_kinal.settings.production"

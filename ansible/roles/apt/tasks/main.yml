@@ -1,0 +1,15 @@
+---
+
+- apt_repository:
+    repo: "ppa:jonathonf/python-3.6"
+
+- name: install packages
+  apt: pkg={{ item.name }} state=present
+  with_items:
+  - name: nginx-full
+  - name: python-pip
+  - name: python3.6
+  - name: python3.6-dev
+  - name: virtualenv
+  - name: runit
+  - name: git

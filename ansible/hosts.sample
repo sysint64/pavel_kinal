@@ -1,0 +1,2 @@
+[webserver]
+92.53.124.77 ansible_user=ubuntu ansible_become=true

@@ -1,0 +1,33 @@
+from humaniq.settings.base import *
+
+{% if project_dir != "" %}
+VAR_ROOT = "{{ project_dir }}"
+{% endif %}
+
+{% if project_static_media_dir != "" %}
+STATIC_ROOT = os.path.join("{{ project_static_media_dir }}", "static")
+MEDIA_ROOT = os.path.join("{{ project_static_media_dir }}", "media")
+{% endif %}
+
+DEBUG = False
+SECRET_KEY = '{{ secret_key }}'
+
+ALLOWED_HOSTS = [
+    "{{ allowed_host }}"
+]
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(VAR_ROOT, 'db.sqlite3'),
+    }
+}
+
+LOCALE_PATHS = (
+    os.path.join(VAR_ROOT, 'locale'),
+)

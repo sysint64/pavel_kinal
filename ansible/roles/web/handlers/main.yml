@@ -1,0 +1,6 @@
+---
+- name: restart nginx
+  service: name=nginx state=restarted enabled=yes
+
+- name: restart gunicorn
+  runit: name={{ server_type }}_gunicorn state=restarted

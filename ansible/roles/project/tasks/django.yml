@@ -1,0 +1,21 @@
+---
+- name: install requirements.txt
+  pip:
+    virtualenv="{{ project_virtualenv_dir }}"
+    virtualenv_python=python3.6
+    requirements={{ project_work_tree }}/requirements.txt
+  notify:
+    - restart gunicorn
+
+- name: copy settings config
+  template: src=settings_{{ server_type }}.j2 dest={{ project_work_tree }}/src/humaniq/settings/{{ server_type }}.py
+  notify:
+    - restart gunicorn
+
+- name: migrate
+  command: "{{ project_virtualenv_dir }}/bin/python {{ project_work_tree }}/src/manage.py migrate --noinput"
+  notify:
+    - restart gunicorn
+
+- name: collectstatic
+  command: "{{ project_virtualenv_dir }}/bin/python {{ project_work_tree }}/src/manage.py collectstatic --noinput"

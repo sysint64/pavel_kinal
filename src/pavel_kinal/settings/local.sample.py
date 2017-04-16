@@ -18,3 +18,7 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+LOCALE_PATHS = (
+    os.path.join(VAR_ROOT, 'locale'),
+)
