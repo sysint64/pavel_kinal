@@ -11,7 +11,7 @@ urlpatterns = [
 
     url(r'^$', views.index),
     url(r'^music/$', views.music, name="music"),
-    url(r'^video/$', views.empty, name="video"),
+    url(r'^video/$', views.video, name="video"),
     url(r'^gear/$', views.empty, name="gear"),
     url(r'^tab/$', views.empty, name="tab"),
     url(r'^bio/$', views.empty, name="bio"),

@@ -40,4 +40,15 @@
     $(window).resize(function() {
         updateMenuTargetOffset();
     });
+
+    $(".modal").click(function(event) {
+        if ($(event.target).hasClass("middle")) {
+            $(this).removeClass("active");
+        }
+    });
+
+    $(".toggle-modal").click(function(event) {
+        $("#"+$(this).data("toggle")).addClass("active");
+        event.preventDefault();
+    });
 })(jQuery);

@@ -2,6 +2,7 @@ from django.shortcuts import render_to_response
 from django.core.urlresolvers import resolve
 
 from pavel_kinal.music.models import Album
+from pavel_kinal.video.models import Video
 
 
 def main_context(request, context=None):
@@ -39,6 +40,13 @@ def music(request):
         "albums": Album.objects.all().order_by("-datetime")
     }
     return render_to_response("music.html", context=main_context(request, context))
+
+
+def video(request):
+    context = {
+        "videos": Video.objects.all()
+    }
+    return render_to_response("video.html", context=main_context(request, context))
 
 
 def empty(request):

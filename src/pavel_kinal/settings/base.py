@@ -34,7 +34,8 @@ INSTALLED_APPS = [
     'compressor',
     'easy_thumbnails',
 
-    'pavel_kinal.music.apps.MusicConfig'
+    'pavel_kinal.music.apps.MusicConfig',
+    'pavel_kinal.video.apps.VideosConfig',
 ]
 
 MIDDLEWARE = [
