@@ -1,5 +1,5 @@
 from django.conf import settings
-from django.conf.urls import url
+from django.conf.urls import url, include
 from django.contrib import admin
 from django.conf.urls.static import static
 
@@ -10,8 +10,8 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
 
     url(r'^$', views.index),
-    url(r'^music/$', views.music, name="music"),
-    url(r'^video/$', views.video, name="video"),
+    url(r'^((?P<lang_code>[a-z]+)/)?music/$', views.music, name="music"),
+    url(r'^((?P<lang_code>[a-z]+)/)?video/$', views.video, name="video"),
     url(r'^gear/$', views.empty, name="gear"),
     url(r'^tab/$', views.empty, name="tab"),
     url(r'^bio/$', views.empty, name="bio"),
@@ -19,6 +19,8 @@ urlpatterns = [
     url(r'^merch/$', views.empty, name="merch"),
     url(r'^tuning/$', views.empty, name="tuning"),
     url(r'^contact/$', views.empty, name="contact"),
+
+    url(r'^ckeditor/', include('ckeditor_uploader.urls')),
 ]
 
 

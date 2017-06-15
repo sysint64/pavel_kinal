@@ -46,7 +46,7 @@
         <div class="modal" id="video-description-{{ video.id }}">
             <div class="middle">
                 <div class="inner">
-                    {{ video.description|linebreaks }}
+                    {{ video.translation.description|safe }}
                 </div>
             </div>
         </div>

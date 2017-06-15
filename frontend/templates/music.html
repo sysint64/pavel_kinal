@@ -33,7 +33,7 @@
                 <div class="row">
             {% endif %}
             <div class="col player-container">
-                <img src="{% thumbnail album.cover 300x300 crop %}" class="cover">
+                <img src="{% thumbnail album.cover 300x300 crop quality=100 %}" class="cover">
                 <a class="price">
                     {% if album.price == 0 %}
                         free

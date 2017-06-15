@@ -1,10 +1,13 @@
+from ckeditor_uploader.fields import RichTextUploadingField
 from django.conf import settings
 from django.db import models
 
+from pavel_kinal.preferences.forms import LanguageField
+from pavel_kinal.preferences.models import Language, MultiLanguageModelMixin
 
-class Video(models.Model):
+
+class Video(MultiLanguageModelMixin, models.Model):
     name = models.CharField(verbose_name="Name", max_length=60)
-    description = models.TextField()
     url = models.URLField(verbose_name="Video url")
 
     def __str__(self):
@@ -30,3 +33,12 @@ class Video(models.Model):
             return None
 
         return "https://www.youtube.com/embed/%s" % self.video_id
+
+
+class VideoTranslation(models.Model):
+    class Meta:
+        default_related_name = "translations"
+
+    video = models.ForeignKey(Video)
+    language = LanguageField(Language, verbose_name="Язык", null=True, blank=True)
+    description = RichTextUploadingField()

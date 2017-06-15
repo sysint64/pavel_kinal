@@ -1,0 +1,8 @@
+<ul class="languages-widget">
+{% for language in languages %}
+    <li {% if active_code == language.pk %}class="active"{% endif %}>
+        <a href="#" lang="{{ language.pk }}"><span class="flag flag-{{ language.pk }}"></span>
+        {{ language.country_name }} ({{ language.country_code }})</a>
+    </li>
+{% endfor %}
+</ul>

@@ -33,7 +33,10 @@ INSTALLED_APPS = [
 
     'compressor',
     'easy_thumbnails',
+    'ckeditor',
+    'ckeditor_uploader',
 
+    'pavel_kinal.preferences.apps.PreferencesConfig',
     'pavel_kinal.music.apps.MusicConfig',
     'pavel_kinal.video.apps.VideosConfig',
 ]
@@ -46,6 +49,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    'pavel_kinal.middleware.LanguageMiddleware',
 ]
 
 ROOT_URLCONF = 'pavel_kinal.urls'
@@ -119,3 +124,8 @@ STATICFILES_DIRS = (
 SVG_DIRS=[
     os.path.join(FRONTEND_ROOT, 'static'),
 ]
+
+CKEDITOR_UPLOAD_PATH = "uploads/"
+CKEDITOR_IMAGE_BACKEND = "pillow"
+
+DEFAULT_LANGUAGE = "en"

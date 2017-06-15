@@ -7,3 +7,5 @@ gunicorn==19.6.0
 libsass
 django-inline-svg
 easy_thumbnails==2.3
+singlemodeladmin
+django-ckeditor==5.2.2

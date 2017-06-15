@@ -1,0 +1,29 @@
+
+.languages-widget a {
+    display: block;
+    padding: 5px;
+    text-decoration: none !important;
+    color: #000;
+}
+
+.languages-widget li.empty a {
+    color: #999;
+}
+
+.languages-widget li.active a {
+    color: #f00;
+}
+
+.languages-widget li {
+    float: left;
+    width: 25%;
+    display: block;
+}
+
+.languages-widget a:hover {
+    background: #f5f5f5;
+}
+
+.js-languages-formset .empty-form {
+    display: none !important;
+}

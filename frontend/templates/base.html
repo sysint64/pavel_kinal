@@ -8,7 +8,8 @@
     <meta charset="UTF-8">
     <title>{% block title %}{% trans "Pavel Kinal" %}{% endblock %}</title>
 
-    <link href="https://fonts.googleapis.com/css?family=Comfortaa:300,400,700&amp;subset=cyrillic" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa:300,400,700&amp;subset=cyrillic"
+          rel="stylesheet">
 
     {% compress css %}
         {% block styles %}
@@ -18,65 +19,73 @@
     {% endcompress %}
 </head>
 <body>
-    {% block start_body %}
-    {% endblock %}
+{% block start_body %}
+{% endblock %}
 
-    {% block header %}
-        <div class="header">
-            <img src="{% static "images/text_logo.svg" %}" class="text_logo">
-            <img src="{% static "images/logo.svg" %}" class="logo">
+{% block header %}
+    <div class="header">
+        <img src="{% static "images/text_logo.svg" %}" class="text_logo">
+        <img src="{% static "images/logo.svg" %}" class="logo">
 
-            <ul class="language_select">
-                <li><a href="#" class="active">EN</a></li>
-                <li><a href="#">RU</a></li>
-            </ul>
+        <ul class="language_select">
+            {% for language in languages %}
+                <li>
+                    <a href="{{ language.permalink }}"
+                            {% if language.is_active %}class="active"{% endif %}
+                    >
+                        {{ language.country_code }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
 
-            <ul class="header__social_links">
-                <li><a href="#" class="icon-yt"></a></li>
-                <li><a href="#" class="icon-vk"></a></li>
-                <li><a href="#" class="icon-fb"></a></li>
-                <li><a href="#" class="icon-ig"></a></li>
-                <li><a href="#" class="icon-tw"></a></li>
-                <li><a href="#" class="icon-twitch"></a></li>
-                <li><a href="#" class="icon-sc"></a></li>
-                <li><a href="#" class="icon-donate"></a></li>
-            </ul>
-        </div>
-    {% endblock %}
-
-    <div class="container">
-        <div class="menu-col">
-            {% block menu %}
-                <ul class="main_menu">
-                    {% for item in menu_items %}
-                        <li>
-                            <a href="{% url item.url_name %}"{% if current_url_name == item.url_name %} class="active"{% endif %}>
-                                {% trans item.name %}
-                            </a>
-                        </li>
-                    {% endfor %}
-                </ul>
-            {% endblock %}
-        </div>
-
-        <div class="content-col">
-            {% block content_block %}
-                <div class="content_block">
-                    {% block content %}
-                    {% endblock %}
-                </div>
-            {% endblock %}
-        </div>
+        <ul class="header__social_links">
+            <li><a href="#" class="icon-yt"></a></li>
+            <li><a href="#" class="icon-vk"></a></li>
+            <li><a href="#" class="icon-fb"></a></li>
+            <li><a href="#" class="icon-ig"></a></li>
+            <li><a href="#" class="icon-tw"></a></li>
+            <li><a href="#" class="icon-twitch"></a></li>
+            <li><a href="#" class="icon-sc"></a></li>
+            <li><a href="#" class="icon-donate"></a></li>
+        </ul>
     </div>
+{% endblock %}
 
-    <div class="modals">
-        {% block modals %}
+<div class="container">
+    <div class="menu-col">
+        {% block menu %}
+            <ul class="main_menu">
+                {% for item in menu_items %}
+                    <li>
+                        <a href="{% url item.url_name %}"{% if current_url_name == item.url_name %}
+                           class="active"{% endif %}>
+                            {% trans item.name %}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
         {% endblock %}
     </div>
 
-    {% block js %}
-        <script src="{% static 'vendor/jquery-3.1.1.min.js' %}" charset="utf-8"></script>
-        <script src="{% static 'js/main.js' %}" charset="utf-8"></script>
+    <div class="content-col">
+        {% block content_block %}
+            <div class="content_block">
+                {% block content %}
+                {% endblock %}
+            </div>
+        {% endblock %}
+    </div>
+</div>
+
+<div class="modals">
+    {% block modals %}
     {% endblock %}
+</div>
+
+{% block js %}
+    <script src="{% static 'vendor/jquery-3.1.1.min.js' %}" charset="utf-8"></script>
+    <script src="{% static 'js/main.js' %}" charset="utf-8"></script>
+{% endblock %}
 </body>
 </html>
