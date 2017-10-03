@@ -12,7 +12,7 @@ urlpatterns = [
     url(r'^$', views.index),
     url(r'^((?P<lang_code>[a-z]+)/)?music/$', views.music, name="music"),
     url(r'^((?P<lang_code>[a-z]+)/)?video/$', views.video, name="video"),
-    url(r'^gear/$', views.empty, name="gear"),
+    url(r'^((?P<lang_code>[a-z]+)/)?gear/$', views.gear, name="gear"),
     url(r'^tab/$', views.empty, name="tab"),
     url(r'^bio/$', views.empty, name="bio"),
     url(r'^photo/$', views.empty, name="photo"),

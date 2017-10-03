@@ -10,3 +10,4 @@ db.sqlite3
 ansible/hosts
 ansible/site.retry
 ansible/vars/secret.yml
+src/pavel_kinal/settings/local.py

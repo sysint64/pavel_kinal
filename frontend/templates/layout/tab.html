@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+{% load thumbnail %}
+
+{% block title %}
+    {{ block.super }}
+    Привет мир
+{% endblock %}
+
+{% block styles %}
+    {{ block.super }}
+    <link href="{% static "styles/music.sass" %}" rel="stylesheet" type="text/x-sass">
+    <link href="{% static "vendor/jquery-ui.min.css" %}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block js %}
+    {{ block.super }}
+    <script src="{% static "vendor/jquery-ui.min.js" %}" type="text/javascript"></script>
+    <script src="{% static "vendor/audiojs/audio.min.js" %}" type="text/javascript"></script>
+    <script src="{% static "js/music.js" %}" type="text/javascript"></script>
+{% endblock %}
+
+{% block content %}
+    <h1 class="hidden">Music</h1>
+    <img class="h1" src="{% static "images/h1/music.svg" %}">
+
+    <div>
+        {% for x in "xxxxxx" %}
+            {% if forloop.counter0|divisibleby:2 %}
+                <div class="clearfix"></div>
+                </div>
+                <div class="row">
+            {% endif %}
+            <div class="col player-container">
+                <img src="/media/redhead_by_crimson_ch3rry-d6bz64j_DDFahDv.jpg.300x300_q100_crop.jpg" class="cover">
+                <h2>Album 1</h2>
+
+                <a class="price-block">
+                    {% if album.price == 0 %}
+                        free
+                    {% else %}
+                        Full tab book: $100
+                    {% endif %}
+                    <span class="icon-download"></span>
+                </a>
+
+                <div class="track-list">
+                    {% for t in "xxxxxx" %}
+                        <div class="track-item"
+                             data-index="{{ forloop.counter0 }}"
+                             data-src="{{ track.file.url }}"
+                             data-audio="audio_album_{{ album.pk }}"
+                        >
+                            <div class="left">
+                                <span class="text">{{ forloop.counter }}.</span>
+                                <span class="icon-play-pause"></span>
+                            </div>
+                            <div class="name">
+                                Track {{ forloop.counter }}
+                            </div>
+                            <div class="right">
+                                <div class="length">
+                                    {{ track.duration }}
+                                </div>
+                                <a class="price">
+                                    {% if track.price == 0 %}
+                                        free
+                                    {% else %}
+                                        ${{ track.price }}
+                                    {% endif %}
+                                    <span class="icon-download"></span>
+                                </a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
+    <div class="clearfix"></div>
+    </div>
+{% endblock %}

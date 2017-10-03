@@ -54,6 +54,7 @@
 
 <div class="container">
     <div class="menu-col">
+    <aside style="position:absolute">
         {% block menu %}
             <ul class="main_menu">
                 {% for item in menu_items %}
@@ -66,6 +67,7 @@
                 {% endfor %}
             </ul>
         {% endblock %}
+    </aside>
     </div>
 
     <div class="content-col">
@@ -84,7 +86,7 @@
 </div>
 
 {% block js %}
-    <script src="{% static 'vendor/jquery-3.1.1.min.js' %}" charset="utf-8"></script>
+    <script src="{% static 'vendor/jquery-3.2.1.min.js' %}" charset="utf-8"></script>
     <script src="{% static 'js/main.js' %}" charset="utf-8"></script>
 {% endblock %}
 </body>

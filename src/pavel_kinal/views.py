@@ -4,6 +4,7 @@ from django.core.urlresolvers import resolve
 from django.utils import translation
 from django.utils.translation import ugettext_lazy as _
 
+from pavel_kinal.gear.models import Gear
 from pavel_kinal.music.models import Album
 from pavel_kinal.preferences.models import Language, Preferences
 from pavel_kinal.video.models import Video
@@ -58,6 +59,13 @@ def video(request, lang_code=None):
         "videos": Video.objects.all()
     }
     return render_to_response("video.html", context=main_context(request, lang_code, context))
+
+
+def gear(request, lang_code=None):
+    context = {
+        "gears": Gear.objects.all()
+    }
+    return render_to_response("gear.html", context=main_context(request, lang_code, context))
 
 
 def empty(request):

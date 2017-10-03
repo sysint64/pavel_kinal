@@ -10,7 +10,7 @@
 
 {% block styles %}
     {{ block.super }}
-    <link href="{% static "styles/video.sass" %}" rel="stylesheet" type="text/x-sass">
+    <link href="{% static "styles/gallery.sass" %}" rel="stylesheet" type="text/x-sass">
 {% endblock %}
 
 {% block js %}
@@ -22,15 +22,14 @@
     <h1 class="hidden">Video</h1>
     <img class="h1" src="{% static "images/h1/video.svg" %}">
 
-    <div class="video-container">
+    <div class="gallery-container">
         {% for video in videos %}
-            <div class="video-item">
+            <div class="gallery-item">
                 <div class="inner">
                     <div class="image-wrapper toggle-modal" data-toggle="video-{{ video.id }}">
                         <img src="{{ video.thumbnail }}">
                     </div>
                     <h2>{{ video }}</h2>
-                    <a href="#" class="toggle-modal" data-toggle="video-description-{{ video.id }}">(description)</a>
                 </div>
             </div>
         {% endfor %}

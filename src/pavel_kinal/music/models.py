@@ -9,6 +9,9 @@ class Album(models.Model):
     cover = ThumbnailerImageField()
     datetime = models.DateTimeField(default=datetime.now)
 
+    def __str__(self):
+        return self.name
+
 
 class Track(models.Model):
     class Meta:
@@ -19,3 +22,8 @@ class Track(models.Model):
     album = models.ForeignKey(Album)
     file = models.FileField(upload_to="music/", blank=True)
     duration = models.CharField(max_length=4, default="0:00")
+
+    def __str__(self):
+        return self.name
+
+
