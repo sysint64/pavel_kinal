@@ -21,16 +21,16 @@
 {% endblock %}
 
 {% block content %}
-    <h1 class="hidden">Video</h1>
-    <img class="h1" src="{% static "images/h1/gear.svg" %}">
+    <h1 class="hidden">{%  trans "Gear" %}</h1>
+    <img class="h1 gear" src="{% static "images/h1/gear.svg" %}">
 
     <div class="gallery-container">
         {% for gear in gears %}
             <div class="gallery-item">
                 <div class="inner">
-                    <a class="image-wrapper" data-fancybox="gallery" href="{% thumbnail gear.image 1280x1024 crop quality=100 %}">
+                    <div class="image-wrapper" data-fancybox="gallery" href="{% thumbnail gear.image 1280x1024 crop quality=100 %}">
                         <img src="{% thumbnail gear.image 480x360 crop quality=100 %}">
-                    </a>
+                    </div>
                     <h2>{{ gear|linebreaksbr }}</h2>
                 </div>
             </div>

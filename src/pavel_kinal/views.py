@@ -7,6 +7,7 @@ from django.utils.translation import ugettext_lazy as _
 from pavel_kinal.gear.models import Gear
 from pavel_kinal.music.models import Album
 from pavel_kinal.preferences.models import Language, Preferences
+from pavel_kinal.tab.models import TabAlbum
 from pavel_kinal.video.models import Video
 
 
@@ -66,6 +67,13 @@ def gear(request, lang_code=None):
         "gears": Gear.objects.all()
     }
     return render_to_response("gear.html", context=main_context(request, lang_code, context))
+
+
+def tab(request, lang_code=None):
+    context = {
+        "tab_albums": TabAlbum.objects.all()
+    }
+    return render_to_response("tab.html", context=main_context(request, lang_code, context))
 
 
 def empty(request):

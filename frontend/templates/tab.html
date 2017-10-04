@@ -11,59 +11,54 @@
 {% block styles %}
     {{ block.super }}
     <link href="{% static "styles/music.sass" %}" rel="stylesheet" type="text/x-sass">
-    <link href="{% static "vendor/jquery-ui.min.css" %}" rel="stylesheet" type="text/css">
 {% endblock %}
 
 {% block js %}
     {{ block.super }}
-    <script src="{% static "vendor/jquery-ui.min.js" %}" type="text/javascript"></script>
-    <script src="{% static "vendor/audiojs/audio.min.js" %}" type="text/javascript"></script>
-    <script src="{% static "js/music.js" %}" type="text/javascript"></script>
 {% endblock %}
 
 {% block content %}
     <h1 class="hidden">Music</h1>
-    <img class="h1" src="{% static "images/h1/music.svg" %}">
+    <img class="h1 tab" src="{% static "images/h1/tab.svg" %}">
 
-    <div>
-        {% for x in "xxxxxx" %}
+    <div style="height: 40px">
+        {% for album in tab_albums %}
             {% if forloop.counter0|divisibleby:2 %}
                 <div class="clearfix"></div>
                 </div>
                 <div class="row">
             {% endif %}
             <div class="col player-container">
-                <img src="/media/redhead_by_crimson_ch3rry-d6bz64j_DDFahDv.jpg.300x300_q100_crop.jpg" class="cover">
-                <h2>Album 1</h2>
+                <img src="{% thumbnail album.cover 300x300 crop quality=100 %}" class="cover">
+                <h2>{{ album }}</h2>
 
                 <a class="price-block">
                     {% if album.price == 0 %}
                         free
                     {% else %}
-                        Full tab book: $100
+                        Full tab book: ${{ album.price }}
                     {% endif %}
                     <span class="icon-download"></span>
                 </a>
 
                 <div class="track-list">
-                    {% for t in "xxxxxx" %}
+                    {% for track in album.tracks.all %}
                         <div class="track-item"
                              data-index="{{ forloop.counter0 }}"
                              data-src="{{ track.file.url }}"
                              data-audio="audio_album_{{ album.pk }}"
                         >
-                            <div class="left">
+                            <div class="left hold">
                                 <span class="text">{{ forloop.counter }}.</span>
-                                <span class="icon-play-pause"></span>
                             </div>
                             <div class="name">
                                 Track {{ forloop.counter }}
                             </div>
-                            <div class="right hold">
+                            <div class="right">
                                 <div class="length">
                                     {{ track.duration }}
                                 </div>
-                                <a class="price">
+                                <a class="price hold">
                                     {% if track.price == 0 %}
                                         free
                                     {% else %}

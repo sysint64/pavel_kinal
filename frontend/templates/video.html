@@ -5,31 +5,33 @@
 
 {% block title %}
     {{ block.super }}
-    Привет мир
+    Video
 {% endblock %}
 
 {% block styles %}
     {{ block.super }}
     <link href="{% static "styles/gallery.sass" %}" rel="stylesheet" type="text/x-sass">
+    <link href="{% static "vendor/jquery.fancybox.min.css" %}" rel="stylesheet" type="text/css">
 {% endblock %}
 
 {% block js %}
     {{ block.super }}
-    <script src="{% static "js/video.js" %}" type="text/javascript"></script>
+    <script src="{% static "vendor/jquery.fancybox.min.js" %}" type="text/javascript"></script>
 {% endblock %}
 
 {% block content %}
     <h1 class="hidden">Video</h1>
-    <img class="h1" src="{% static "images/h1/video.svg" %}">
+    <img class="h1 video" src="{% static "images/h1/video.svg" %}">
 
     <div class="gallery-container">
         {% for video in videos %}
             <div class="gallery-item">
                 <div class="inner">
-                    <div class="image-wrapper toggle-modal" data-toggle="video-{{ video.id }}">
+                    <div data-fancybox class="image-wrapper toggle-modal" href="{{ video.url }}">
                         <img src="{{ video.thumbnail }}">
                     </div>
                     <h2>{{ video }}</h2>
+                    <a href="#" class="toggle-modal" data-toggle="video-description-{{ video.id }}">(description)</a>
                 </div>
             </div>
         {% endfor %}
@@ -46,15 +48,6 @@
             <div class="middle">
                 <div class="inner">
                     {{ video.translation.description|safe }}
-                </div>
-            </div>
-        </div>
-
-        {# Video #}
-        <div class="modal" id="video-{{ video.id }}">
-            <div class="middle">
-                <div class="inner video">
-                    <iframe width="800" height="500" src="{{ video.embedded_video_url }}?enablejsapi=1" frameborder="0" allowfullscreen></iframe>
                 </div>
             </div>
         </div>

@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'pavel_kinal.music.apps.MusicConfig',
     'pavel_kinal.video.apps.VideosConfig',
     'pavel_kinal.gear.apps.GearConfig',
+    'pavel_kinal.tab.apps.TabsConfig',
 ]
 
 MIDDLEWARE = [

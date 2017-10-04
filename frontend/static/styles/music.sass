@@ -337,6 +337,9 @@ h2
             left: inherit
             right: 0
 
+            &.hold
+                display: block
+
             @media (min-width: $min-width-wide)
                 font-size: 18px
 
@@ -350,6 +353,9 @@ h2
     .track-item:hover, .track-item.playing, .track-item.current
         .left .text
             display: none
+
+        .left.hold .text
+            display: block
 
         .left .icon-play-pause
             display: block

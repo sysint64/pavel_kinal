@@ -25,7 +25,7 @@
     <h1 class="hidden">Music</h1>
     <img class="h1" src="{% static "images/h1/music.svg" %}">
 
-    <div>
+    <div style="height: 40px">
         {% for album in albums %}
             {% if forloop.counter0|divisibleby:2 %}
                 <div class="clearfix"></div>
